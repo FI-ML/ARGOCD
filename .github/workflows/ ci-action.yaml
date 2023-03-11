@@ -58,7 +58,7 @@ jobs:
       - name: Build image and push to Docker Hub and Github Container Registry
         uses: docker/build-push-action@v2
         with:
-          context: ./
+          context: angular-app
           tags: /
             fi-ml/ARGOCD:{{ github:sha }}
             ghcr.io/fi-ml/ARGOCD:{{ github:sha }}
@@ -73,7 +73,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: fi-ml/ARGOCD
+          repository: fi-ml/ARGOCD/infra
           ref: 'master'
           token: ${{ secrets.GIT_AUTH_TOKEN  }}
       - name: setup git config
